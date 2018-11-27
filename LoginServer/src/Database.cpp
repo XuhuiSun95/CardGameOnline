@@ -16,7 +16,7 @@ void Database::Release() {
     sInstance = nullptr;
 }
 
-Database::Database(const Config& cfg){
+Database::Database(const Config& cfg) {
 
     mConfig = &cfg;
     mClient = new mysqlx::Client(
