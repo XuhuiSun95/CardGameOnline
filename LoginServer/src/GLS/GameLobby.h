@@ -11,7 +11,7 @@
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include "cgo_types.h"
 
-namespace cgo {
+
 
 #ifdef _WIN32
   #pragma warning( push )
@@ -21,9 +21,9 @@ namespace cgo {
 class GameLobbyIf {
  public:
   virtual ~GameLobbyIf() {}
-  virtual bool signup(const std::string& username, const std::string& password) = 0;
-  virtual bool signin(const std::string& username, const std::string& password) = 0;
-  virtual bool fetch_game(const Game::type g) = 0;
+  virtual bool sign_up(const std::string& username, const std::string& password) = 0;
+  virtual bool sign_in(const std::string& username, const std::string& password) = 0;
+  virtual void fetch_game(Path& _return, const Game::type g) = 0;
 };
 
 class GameLobbyIfFactory {
@@ -53,45 +53,44 @@ class GameLobbyIfSingletonFactory : virtual public GameLobbyIfFactory {
 class GameLobbyNull : virtual public GameLobbyIf {
  public:
   virtual ~GameLobbyNull() {}
-  bool signup(const std::string& /* username */, const std::string& /* password */) {
+  bool sign_up(const std::string& /* username */, const std::string& /* password */) {
     bool _return = false;
     return _return;
   }
-  bool signin(const std::string& /* username */, const std::string& /* password */) {
+  bool sign_in(const std::string& /* username */, const std::string& /* password */) {
     bool _return = false;
     return _return;
   }
-  bool fetch_game(const Game::type /* g */) {
-    bool _return = false;
-    return _return;
+  void fetch_game(Path& /* _return */, const Game::type /* g */) {
+    return;
   }
 };
 
-typedef struct _GameLobby_signup_args__isset {
-  _GameLobby_signup_args__isset() : username(false), password(false) {}
+typedef struct _GameLobby_sign_up_args__isset {
+  _GameLobby_sign_up_args__isset() : username(false), password(false) {}
   bool username :1;
   bool password :1;
-} _GameLobby_signup_args__isset;
+} _GameLobby_sign_up_args__isset;
 
-class GameLobby_signup_args {
+class GameLobby_sign_up_args {
  public:
 
-  GameLobby_signup_args(const GameLobby_signup_args&);
-  GameLobby_signup_args& operator=(const GameLobby_signup_args&);
-  GameLobby_signup_args() : username(), password() {
+  GameLobby_sign_up_args(const GameLobby_sign_up_args&);
+  GameLobby_sign_up_args& operator=(const GameLobby_sign_up_args&);
+  GameLobby_sign_up_args() : username(), password() {
   }
 
-  virtual ~GameLobby_signup_args() throw();
+  virtual ~GameLobby_sign_up_args() throw();
   std::string username;
   std::string password;
 
-  _GameLobby_signup_args__isset __isset;
+  _GameLobby_sign_up_args__isset __isset;
 
   void __set_username(const std::string& val);
 
   void __set_password(const std::string& val);
 
-  bool operator == (const GameLobby_signup_args & rhs) const
+  bool operator == (const GameLobby_sign_up_args & rhs) const
   {
     if (!(username == rhs.username))
       return false;
@@ -99,11 +98,11 @@ class GameLobby_signup_args {
       return false;
     return true;
   }
-  bool operator != (const GameLobby_signup_args &rhs) const {
+  bool operator != (const GameLobby_sign_up_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GameLobby_signup_args & ) const;
+  bool operator < (const GameLobby_sign_up_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -111,11 +110,11 @@ class GameLobby_signup_args {
 };
 
 
-class GameLobby_signup_pargs {
+class GameLobby_sign_up_pargs {
  public:
 
 
-  virtual ~GameLobby_signup_pargs() throw();
+  virtual ~GameLobby_sign_up_pargs() throw();
   const std::string* username;
   const std::string* password;
 
@@ -123,31 +122,31 @@ class GameLobby_signup_pargs {
 
 };
 
-typedef struct _GameLobby_signup_result__isset {
-  _GameLobby_signup_result__isset() : success(false), e(false) {}
+typedef struct _GameLobby_sign_up_result__isset {
+  _GameLobby_sign_up_result__isset() : success(false), e(false) {}
   bool success :1;
   bool e :1;
-} _GameLobby_signup_result__isset;
+} _GameLobby_sign_up_result__isset;
 
-class GameLobby_signup_result {
+class GameLobby_sign_up_result {
  public:
 
-  GameLobby_signup_result(const GameLobby_signup_result&);
-  GameLobby_signup_result& operator=(const GameLobby_signup_result&);
-  GameLobby_signup_result() : success(0) {
+  GameLobby_sign_up_result(const GameLobby_sign_up_result&);
+  GameLobby_sign_up_result& operator=(const GameLobby_sign_up_result&);
+  GameLobby_sign_up_result() : success(0) {
   }
 
-  virtual ~GameLobby_signup_result() throw();
+  virtual ~GameLobby_sign_up_result() throw();
   bool success;
   InvalidOperation e;
 
-  _GameLobby_signup_result__isset __isset;
+  _GameLobby_sign_up_result__isset __isset;
 
   void __set_success(const bool val);
 
   void __set_e(const InvalidOperation& val);
 
-  bool operator == (const GameLobby_signup_result & rhs) const
+  bool operator == (const GameLobby_sign_up_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -155,62 +154,62 @@ class GameLobby_signup_result {
       return false;
     return true;
   }
-  bool operator != (const GameLobby_signup_result &rhs) const {
+  bool operator != (const GameLobby_sign_up_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GameLobby_signup_result & ) const;
+  bool operator < (const GameLobby_sign_up_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _GameLobby_signup_presult__isset {
-  _GameLobby_signup_presult__isset() : success(false), e(false) {}
+typedef struct _GameLobby_sign_up_presult__isset {
+  _GameLobby_sign_up_presult__isset() : success(false), e(false) {}
   bool success :1;
   bool e :1;
-} _GameLobby_signup_presult__isset;
+} _GameLobby_sign_up_presult__isset;
 
-class GameLobby_signup_presult {
+class GameLobby_sign_up_presult {
  public:
 
 
-  virtual ~GameLobby_signup_presult() throw();
+  virtual ~GameLobby_sign_up_presult() throw();
   bool* success;
   InvalidOperation e;
 
-  _GameLobby_signup_presult__isset __isset;
+  _GameLobby_sign_up_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _GameLobby_signin_args__isset {
-  _GameLobby_signin_args__isset() : username(false), password(false) {}
+typedef struct _GameLobby_sign_in_args__isset {
+  _GameLobby_sign_in_args__isset() : username(false), password(false) {}
   bool username :1;
   bool password :1;
-} _GameLobby_signin_args__isset;
+} _GameLobby_sign_in_args__isset;
 
-class GameLobby_signin_args {
+class GameLobby_sign_in_args {
  public:
 
-  GameLobby_signin_args(const GameLobby_signin_args&);
-  GameLobby_signin_args& operator=(const GameLobby_signin_args&);
-  GameLobby_signin_args() : username(), password() {
+  GameLobby_sign_in_args(const GameLobby_sign_in_args&);
+  GameLobby_sign_in_args& operator=(const GameLobby_sign_in_args&);
+  GameLobby_sign_in_args() : username(), password() {
   }
 
-  virtual ~GameLobby_signin_args() throw();
+  virtual ~GameLobby_sign_in_args() throw();
   std::string username;
   std::string password;
 
-  _GameLobby_signin_args__isset __isset;
+  _GameLobby_sign_in_args__isset __isset;
 
   void __set_username(const std::string& val);
 
   void __set_password(const std::string& val);
 
-  bool operator == (const GameLobby_signin_args & rhs) const
+  bool operator == (const GameLobby_sign_in_args & rhs) const
   {
     if (!(username == rhs.username))
       return false;
@@ -218,11 +217,11 @@ class GameLobby_signin_args {
       return false;
     return true;
   }
-  bool operator != (const GameLobby_signin_args &rhs) const {
+  bool operator != (const GameLobby_sign_in_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GameLobby_signin_args & ) const;
+  bool operator < (const GameLobby_sign_in_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -230,11 +229,11 @@ class GameLobby_signin_args {
 };
 
 
-class GameLobby_signin_pargs {
+class GameLobby_sign_in_pargs {
  public:
 
 
-  virtual ~GameLobby_signin_pargs() throw();
+  virtual ~GameLobby_sign_in_pargs() throw();
   const std::string* username;
   const std::string* password;
 
@@ -242,31 +241,31 @@ class GameLobby_signin_pargs {
 
 };
 
-typedef struct _GameLobby_signin_result__isset {
-  _GameLobby_signin_result__isset() : success(false), e(false) {}
+typedef struct _GameLobby_sign_in_result__isset {
+  _GameLobby_sign_in_result__isset() : success(false), e(false) {}
   bool success :1;
   bool e :1;
-} _GameLobby_signin_result__isset;
+} _GameLobby_sign_in_result__isset;
 
-class GameLobby_signin_result {
+class GameLobby_sign_in_result {
  public:
 
-  GameLobby_signin_result(const GameLobby_signin_result&);
-  GameLobby_signin_result& operator=(const GameLobby_signin_result&);
-  GameLobby_signin_result() : success(0) {
+  GameLobby_sign_in_result(const GameLobby_sign_in_result&);
+  GameLobby_sign_in_result& operator=(const GameLobby_sign_in_result&);
+  GameLobby_sign_in_result() : success(0) {
   }
 
-  virtual ~GameLobby_signin_result() throw();
+  virtual ~GameLobby_sign_in_result() throw();
   bool success;
   InvalidOperation e;
 
-  _GameLobby_signin_result__isset __isset;
+  _GameLobby_sign_in_result__isset __isset;
 
   void __set_success(const bool val);
 
   void __set_e(const InvalidOperation& val);
 
-  bool operator == (const GameLobby_signin_result & rhs) const
+  bool operator == (const GameLobby_sign_in_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -274,32 +273,32 @@ class GameLobby_signin_result {
       return false;
     return true;
   }
-  bool operator != (const GameLobby_signin_result &rhs) const {
+  bool operator != (const GameLobby_sign_in_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GameLobby_signin_result & ) const;
+  bool operator < (const GameLobby_sign_in_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _GameLobby_signin_presult__isset {
-  _GameLobby_signin_presult__isset() : success(false), e(false) {}
+typedef struct _GameLobby_sign_in_presult__isset {
+  _GameLobby_sign_in_presult__isset() : success(false), e(false) {}
   bool success :1;
   bool e :1;
-} _GameLobby_signin_presult__isset;
+} _GameLobby_sign_in_presult__isset;
 
-class GameLobby_signin_presult {
+class GameLobby_sign_in_presult {
  public:
 
 
-  virtual ~GameLobby_signin_presult() throw();
+  virtual ~GameLobby_sign_in_presult() throw();
   bool* success;
   InvalidOperation e;
 
-  _GameLobby_signin_presult__isset __isset;
+  _GameLobby_sign_in_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -364,15 +363,15 @@ class GameLobby_fetch_game_result {
 
   GameLobby_fetch_game_result(const GameLobby_fetch_game_result&);
   GameLobby_fetch_game_result& operator=(const GameLobby_fetch_game_result&);
-  GameLobby_fetch_game_result() : success(0) {
+  GameLobby_fetch_game_result() {
   }
 
   virtual ~GameLobby_fetch_game_result() throw();
-  bool success;
+  Path success;
 
   _GameLobby_fetch_game_result__isset __isset;
 
-  void __set_success(const bool val);
+  void __set_success(const Path& val);
 
   bool operator == (const GameLobby_fetch_game_result & rhs) const
   {
@@ -401,7 +400,7 @@ class GameLobby_fetch_game_presult {
 
 
   virtual ~GameLobby_fetch_game_presult() throw();
-  bool* success;
+  Path* success;
 
   _GameLobby_fetch_game_presult__isset __isset;
 
@@ -434,15 +433,15 @@ class GameLobbyClient : virtual public GameLobbyIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  bool signup(const std::string& username, const std::string& password);
-  void send_signup(const std::string& username, const std::string& password);
-  bool recv_signup();
-  bool signin(const std::string& username, const std::string& password);
-  void send_signin(const std::string& username, const std::string& password);
-  bool recv_signin();
-  bool fetch_game(const Game::type g);
+  bool sign_up(const std::string& username, const std::string& password);
+  void send_sign_up(const std::string& username, const std::string& password);
+  bool recv_sign_up();
+  bool sign_in(const std::string& username, const std::string& password);
+  void send_sign_in(const std::string& username, const std::string& password);
+  bool recv_sign_in();
+  void fetch_game(Path& _return, const Game::type g);
   void send_fetch_game(const Game::type g);
-  bool recv_fetch_game();
+  void recv_fetch_game(Path& _return);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -458,14 +457,14 @@ class GameLobbyProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef  void (GameLobbyProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
-  void process_signup(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_signin(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_sign_up(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_sign_in(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_fetch_game(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   GameLobbyProcessor(boost::shared_ptr<GameLobbyIf> iface) :
     iface_(iface) {
-    processMap_["signup"] = &GameLobbyProcessor::process_signup;
-    processMap_["signin"] = &GameLobbyProcessor::process_signin;
+    processMap_["sign_up"] = &GameLobbyProcessor::process_sign_up;
+    processMap_["sign_in"] = &GameLobbyProcessor::process_sign_in;
     processMap_["fetch_game"] = &GameLobbyProcessor::process_fetch_game;
   }
 
@@ -495,31 +494,32 @@ class GameLobbyMultiface : virtual public GameLobbyIf {
     ifaces_.push_back(iface);
   }
  public:
-  bool signup(const std::string& username, const std::string& password) {
+  bool sign_up(const std::string& username, const std::string& password) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->signup(username, password);
+      ifaces_[i]->sign_up(username, password);
     }
-    return ifaces_[i]->signup(username, password);
+    return ifaces_[i]->sign_up(username, password);
   }
 
-  bool signin(const std::string& username, const std::string& password) {
+  bool sign_in(const std::string& username, const std::string& password) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->signin(username, password);
+      ifaces_[i]->sign_in(username, password);
     }
-    return ifaces_[i]->signin(username, password);
+    return ifaces_[i]->sign_in(username, password);
   }
 
-  bool fetch_game(const Game::type g) {
+  void fetch_game(Path& _return, const Game::type g) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->fetch_game(g);
+      ifaces_[i]->fetch_game(_return, g);
     }
-    return ifaces_[i]->fetch_game(g);
+    ifaces_[i]->fetch_game(_return, g);
+    return;
   }
 
 };
@@ -552,15 +552,15 @@ class GameLobbyConcurrentClient : virtual public GameLobbyIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  bool signup(const std::string& username, const std::string& password);
-  int32_t send_signup(const std::string& username, const std::string& password);
-  bool recv_signup(const int32_t seqid);
-  bool signin(const std::string& username, const std::string& password);
-  int32_t send_signin(const std::string& username, const std::string& password);
-  bool recv_signin(const int32_t seqid);
-  bool fetch_game(const Game::type g);
+  bool sign_up(const std::string& username, const std::string& password);
+  int32_t send_sign_up(const std::string& username, const std::string& password);
+  bool recv_sign_up(const int32_t seqid);
+  bool sign_in(const std::string& username, const std::string& password);
+  int32_t send_sign_in(const std::string& username, const std::string& password);
+  bool recv_sign_in(const int32_t seqid);
+  void fetch_game(Path& _return, const Game::type g);
   int32_t send_fetch_game(const Game::type g);
-  bool recv_fetch_game(const int32_t seqid);
+  void recv_fetch_game(Path& _return, const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -573,6 +573,6 @@ class GameLobbyConcurrentClient : virtual public GameLobbyIf {
   #pragma warning( pop )
 #endif
 
-} // namespace
+
 
 #endif

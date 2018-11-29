@@ -1,9 +1,10 @@
-namespace cpp cgo
-namespace cocoa cgo
-namespace java cgo
-
 enum Game {
     DOUDIZHU = 1,
+}
+
+struct Path {
+    1: string host,
+    2: i32 port
 }
 
 # ==============================================
@@ -22,9 +23,9 @@ exception InvalidOperation {
 
 service GameLobby {
 
-    bool signup(1:string username, 2:string password) throws (1:InvalidOperation e),
+    bool sign_up(1:string username, 2:string password) throws (1:InvalidOperation e),
 
-    bool signin(1:string username, 2:string password) throws (1:InvalidOperation e),
+    bool sign_in(1:string username, 2:string password) throws (1:InvalidOperation e),
 
-    bool fetch_game(1:Game g)
+    Path fetch_game(1:Game g)
 }

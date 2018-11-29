@@ -17,7 +17,7 @@
 #include <thrift/cxxfunctional.h>
 
 
-namespace cgo {
+
 
 struct Game {
   enum type {
@@ -27,7 +27,61 @@ struct Game {
 
 extern const std::map<int, const char*> _Game_VALUES_TO_NAMES;
 
+class Path;
+
 class InvalidOperation;
+
+typedef struct _Path__isset {
+  _Path__isset() : host(false), port(false) {}
+  bool host :1;
+  bool port :1;
+} _Path__isset;
+
+class Path {
+ public:
+
+  Path(const Path&);
+  Path& operator=(const Path&);
+  Path() : host(), port(0) {
+  }
+
+  virtual ~Path() throw();
+  std::string host;
+  int32_t port;
+
+  _Path__isset __isset;
+
+  void __set_host(const std::string& val);
+
+  void __set_port(const int32_t val);
+
+  bool operator == (const Path & rhs) const
+  {
+    if (!(host == rhs.host))
+      return false;
+    if (!(port == rhs.port))
+      return false;
+    return true;
+  }
+  bool operator != (const Path &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Path & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Path &a, Path &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Path& obj)
+{
+  obj.printTo(out);
+  return out;
+}
 
 typedef struct _InvalidOperation__isset {
   _InvalidOperation__isset() : err_code(false), why(false) {}
@@ -83,6 +137,6 @@ inline std::ostream& operator<<(std::ostream& out, const InvalidOperation& obj)
   return out;
 }
 
-} // namespace
+
 
 #endif

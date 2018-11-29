@@ -6,12 +6,12 @@
  */
 #include "cgo_constants.h"
 
-namespace cgo {
+
 
 const cgoConstants g_cgo_constants;
 
 cgoConstants::cgoConstants() {
 }
 
-} // namespace
+
 

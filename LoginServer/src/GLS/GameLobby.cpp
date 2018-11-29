@@ -6,14 +6,14 @@
  */
 #include "GameLobby.h"
 
-namespace cgo {
 
 
-GameLobby_signup_args::~GameLobby_signup_args() throw() {
+
+GameLobby_sign_up_args::~GameLobby_sign_up_args() throw() {
 }
 
 
-uint32_t GameLobby_signup_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t GameLobby_sign_up_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -62,10 +62,10 @@ uint32_t GameLobby_signup_args::read(::apache::thrift::protocol::TProtocol* ipro
   return xfer;
 }
 
-uint32_t GameLobby_signup_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t GameLobby_sign_up_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("GameLobby_signup_args");
+  xfer += oprot->writeStructBegin("GameLobby_sign_up_args");
 
   xfer += oprot->writeFieldBegin("username", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->username);
@@ -81,14 +81,14 @@ uint32_t GameLobby_signup_args::write(::apache::thrift::protocol::TProtocol* opr
 }
 
 
-GameLobby_signup_pargs::~GameLobby_signup_pargs() throw() {
+GameLobby_sign_up_pargs::~GameLobby_sign_up_pargs() throw() {
 }
 
 
-uint32_t GameLobby_signup_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t GameLobby_sign_up_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("GameLobby_signup_pargs");
+  xfer += oprot->writeStructBegin("GameLobby_sign_up_pargs");
 
   xfer += oprot->writeFieldBegin("username", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString((*(this->username)));
@@ -104,11 +104,11 @@ uint32_t GameLobby_signup_pargs::write(::apache::thrift::protocol::TProtocol* op
 }
 
 
-GameLobby_signup_result::~GameLobby_signup_result() throw() {
+GameLobby_sign_up_result::~GameLobby_sign_up_result() throw() {
 }
 
 
-uint32_t GameLobby_signup_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t GameLobby_sign_up_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -157,11 +157,11 @@ uint32_t GameLobby_signup_result::read(::apache::thrift::protocol::TProtocol* ip
   return xfer;
 }
 
-uint32_t GameLobby_signup_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t GameLobby_sign_up_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("GameLobby_signup_result");
+  xfer += oprot->writeStructBegin("GameLobby_sign_up_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_BOOL, 0);
@@ -178,11 +178,11 @@ uint32_t GameLobby_signup_result::write(::apache::thrift::protocol::TProtocol* o
 }
 
 
-GameLobby_signup_presult::~GameLobby_signup_presult() throw() {
+GameLobby_sign_up_presult::~GameLobby_sign_up_presult() throw() {
 }
 
 
-uint32_t GameLobby_signup_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t GameLobby_sign_up_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -232,11 +232,11 @@ uint32_t GameLobby_signup_presult::read(::apache::thrift::protocol::TProtocol* i
 }
 
 
-GameLobby_signin_args::~GameLobby_signin_args() throw() {
+GameLobby_sign_in_args::~GameLobby_sign_in_args() throw() {
 }
 
 
-uint32_t GameLobby_signin_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t GameLobby_sign_in_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -285,10 +285,10 @@ uint32_t GameLobby_signin_args::read(::apache::thrift::protocol::TProtocol* ipro
   return xfer;
 }
 
-uint32_t GameLobby_signin_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t GameLobby_sign_in_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("GameLobby_signin_args");
+  xfer += oprot->writeStructBegin("GameLobby_sign_in_args");
 
   xfer += oprot->writeFieldBegin("username", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->username);
@@ -304,14 +304,14 @@ uint32_t GameLobby_signin_args::write(::apache::thrift::protocol::TProtocol* opr
 }
 
 
-GameLobby_signin_pargs::~GameLobby_signin_pargs() throw() {
+GameLobby_sign_in_pargs::~GameLobby_sign_in_pargs() throw() {
 }
 
 
-uint32_t GameLobby_signin_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t GameLobby_sign_in_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("GameLobby_signin_pargs");
+  xfer += oprot->writeStructBegin("GameLobby_sign_in_pargs");
 
   xfer += oprot->writeFieldBegin("username", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString((*(this->username)));
@@ -327,11 +327,11 @@ uint32_t GameLobby_signin_pargs::write(::apache::thrift::protocol::TProtocol* op
 }
 
 
-GameLobby_signin_result::~GameLobby_signin_result() throw() {
+GameLobby_sign_in_result::~GameLobby_sign_in_result() throw() {
 }
 
 
-uint32_t GameLobby_signin_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t GameLobby_sign_in_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -380,11 +380,11 @@ uint32_t GameLobby_signin_result::read(::apache::thrift::protocol::TProtocol* ip
   return xfer;
 }
 
-uint32_t GameLobby_signin_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t GameLobby_sign_in_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("GameLobby_signin_result");
+  xfer += oprot->writeStructBegin("GameLobby_sign_in_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_BOOL, 0);
@@ -401,11 +401,11 @@ uint32_t GameLobby_signin_result::write(::apache::thrift::protocol::TProtocol* o
 }
 
 
-GameLobby_signin_presult::~GameLobby_signin_presult() throw() {
+GameLobby_sign_in_presult::~GameLobby_sign_in_presult() throw() {
 }
 
 
-uint32_t GameLobby_signin_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t GameLobby_sign_in_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -482,9 +482,9 @@ uint32_t GameLobby_fetch_game_args::read(::apache::thrift::protocol::TProtocol* 
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast2;
-          xfer += iprot->readI32(ecast2);
-          this->g = (Game::type)ecast2;
+          int32_t ecast4;
+          xfer += iprot->readI32(ecast4);
+          this->g = (Game::type)ecast4;
           this->__isset.g = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -562,8 +562,8 @@ uint32_t GameLobby_fetch_game_result::read(::apache::thrift::protocol::TProtocol
     switch (fid)
     {
       case 0:
-        if (ftype == ::apache::thrift::protocol::T_BOOL) {
-          xfer += iprot->readBool(this->success);
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
           this->__isset.success = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -588,8 +588,8 @@ uint32_t GameLobby_fetch_game_result::write(::apache::thrift::protocol::TProtoco
   xfer += oprot->writeStructBegin("GameLobby_fetch_game_result");
 
   if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_BOOL, 0);
-    xfer += oprot->writeBool(this->success);
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -624,8 +624,8 @@ uint32_t GameLobby_fetch_game_presult::read(::apache::thrift::protocol::TProtoco
     switch (fid)
     {
       case 0:
-        if (ftype == ::apache::thrift::protocol::T_BOOL) {
-          xfer += iprot->readBool((*(this->success)));
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
           this->__isset.success = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -643,18 +643,18 @@ uint32_t GameLobby_fetch_game_presult::read(::apache::thrift::protocol::TProtoco
   return xfer;
 }
 
-bool GameLobbyClient::signup(const std::string& username, const std::string& password)
+bool GameLobbyClient::sign_up(const std::string& username, const std::string& password)
 {
-  send_signup(username, password);
-  return recv_signup();
+  send_sign_up(username, password);
+  return recv_sign_up();
 }
 
-void GameLobbyClient::send_signup(const std::string& username, const std::string& password)
+void GameLobbyClient::send_sign_up(const std::string& username, const std::string& password)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("signup", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("sign_up", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  GameLobby_signup_pargs args;
+  GameLobby_sign_up_pargs args;
   args.username = &username;
   args.password = &password;
   args.write(oprot_);
@@ -664,7 +664,7 @@ void GameLobbyClient::send_signup(const std::string& username, const std::string
   oprot_->getTransport()->flush();
 }
 
-bool GameLobbyClient::recv_signup()
+bool GameLobbyClient::recv_sign_up()
 {
 
   int32_t rseqid = 0;
@@ -684,13 +684,13 @@ bool GameLobbyClient::recv_signup()
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("signup") != 0) {
+  if (fname.compare("sign_up") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
   bool _return;
-  GameLobby_signup_presult result;
+  GameLobby_sign_up_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -702,21 +702,21 @@ bool GameLobbyClient::recv_signup()
   if (result.__isset.e) {
     throw result.e;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signup failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "sign_up failed: unknown result");
 }
 
-bool GameLobbyClient::signin(const std::string& username, const std::string& password)
+bool GameLobbyClient::sign_in(const std::string& username, const std::string& password)
 {
-  send_signin(username, password);
-  return recv_signin();
+  send_sign_in(username, password);
+  return recv_sign_in();
 }
 
-void GameLobbyClient::send_signin(const std::string& username, const std::string& password)
+void GameLobbyClient::send_sign_in(const std::string& username, const std::string& password)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("signin", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("sign_in", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  GameLobby_signin_pargs args;
+  GameLobby_sign_in_pargs args;
   args.username = &username;
   args.password = &password;
   args.write(oprot_);
@@ -726,7 +726,7 @@ void GameLobbyClient::send_signin(const std::string& username, const std::string
   oprot_->getTransport()->flush();
 }
 
-bool GameLobbyClient::recv_signin()
+bool GameLobbyClient::recv_sign_in()
 {
 
   int32_t rseqid = 0;
@@ -746,13 +746,13 @@ bool GameLobbyClient::recv_signin()
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("signin") != 0) {
+  if (fname.compare("sign_in") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
   bool _return;
-  GameLobby_signin_presult result;
+  GameLobby_sign_in_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -764,13 +764,13 @@ bool GameLobbyClient::recv_signin()
   if (result.__isset.e) {
     throw result.e;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signin failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "sign_in failed: unknown result");
 }
 
-bool GameLobbyClient::fetch_game(const Game::type g)
+void GameLobbyClient::fetch_game(Path& _return, const Game::type g)
 {
   send_fetch_game(g);
-  return recv_fetch_game();
+  recv_fetch_game(_return);
 }
 
 void GameLobbyClient::send_fetch_game(const Game::type g)
@@ -787,7 +787,7 @@ void GameLobbyClient::send_fetch_game(const Game::type g)
   oprot_->getTransport()->flush();
 }
 
-bool GameLobbyClient::recv_fetch_game()
+void GameLobbyClient::recv_fetch_game(Path& _return)
 {
 
   int32_t rseqid = 0;
@@ -812,7 +812,6 @@ bool GameLobbyClient::recv_fetch_game()
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  bool _return;
   GameLobby_fetch_game_presult result;
   result.success = &_return;
   result.read(iprot_);
@@ -820,7 +819,8 @@ bool GameLobbyClient::recv_fetch_game()
   iprot_->getTransport()->readEnd();
 
   if (result.__isset.success) {
-    return _return;
+    // _return pointer has now been filled
+    return;
   }
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "fetch_game failed: unknown result");
 }
@@ -844,41 +844,41 @@ bool GameLobbyProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* ipr
   return true;
 }
 
-void GameLobbyProcessor::process_signup(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void GameLobbyProcessor::process_sign_up(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("GameLobby.signup", callContext);
+    ctx = this->eventHandler_->getContext("GameLobby.sign_up", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "GameLobby.signup");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "GameLobby.sign_up");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "GameLobby.signup");
+    this->eventHandler_->preRead(ctx, "GameLobby.sign_up");
   }
 
-  GameLobby_signup_args args;
+  GameLobby_sign_up_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "GameLobby.signup", bytes);
+    this->eventHandler_->postRead(ctx, "GameLobby.sign_up", bytes);
   }
 
-  GameLobby_signup_result result;
+  GameLobby_sign_up_result result;
   try {
-    result.success = iface_->signup(args.username, args.password);
+    result.success = iface_->sign_up(args.username, args.password);
     result.__isset.success = true;
   } catch (InvalidOperation &e) {
     result.e = e;
     result.__isset.e = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "GameLobby.signup");
+      this->eventHandler_->handlerError(ctx, "GameLobby.sign_up");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("signup", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("sign_up", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -887,55 +887,55 @@ void GameLobbyProcessor::process_signup(int32_t seqid, ::apache::thrift::protoco
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "GameLobby.signup");
+    this->eventHandler_->preWrite(ctx, "GameLobby.sign_up");
   }
 
-  oprot->writeMessageBegin("signup", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("sign_up", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "GameLobby.signup", bytes);
+    this->eventHandler_->postWrite(ctx, "GameLobby.sign_up", bytes);
   }
 }
 
-void GameLobbyProcessor::process_signin(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void GameLobbyProcessor::process_sign_in(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("GameLobby.signin", callContext);
+    ctx = this->eventHandler_->getContext("GameLobby.sign_in", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "GameLobby.signin");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "GameLobby.sign_in");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "GameLobby.signin");
+    this->eventHandler_->preRead(ctx, "GameLobby.sign_in");
   }
 
-  GameLobby_signin_args args;
+  GameLobby_sign_in_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "GameLobby.signin", bytes);
+    this->eventHandler_->postRead(ctx, "GameLobby.sign_in", bytes);
   }
 
-  GameLobby_signin_result result;
+  GameLobby_sign_in_result result;
   try {
-    result.success = iface_->signin(args.username, args.password);
+    result.success = iface_->sign_in(args.username, args.password);
     result.__isset.success = true;
   } catch (InvalidOperation &e) {
     result.e = e;
     result.__isset.e = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "GameLobby.signin");
+      this->eventHandler_->handlerError(ctx, "GameLobby.sign_in");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("signin", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("sign_in", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -944,17 +944,17 @@ void GameLobbyProcessor::process_signin(int32_t seqid, ::apache::thrift::protoco
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "GameLobby.signin");
+    this->eventHandler_->preWrite(ctx, "GameLobby.sign_in");
   }
 
-  oprot->writeMessageBegin("signin", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("sign_in", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "GameLobby.signin", bytes);
+    this->eventHandler_->postWrite(ctx, "GameLobby.sign_in", bytes);
   }
 }
 
@@ -981,7 +981,7 @@ void GameLobbyProcessor::process_fetch_game(int32_t seqid, ::apache::thrift::pro
 
   GameLobby_fetch_game_result result;
   try {
-    result.success = iface_->fetch_game(args.g);
+    iface_->fetch_game(result.success, args.g);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
@@ -1019,19 +1019,19 @@ void GameLobbyProcessor::process_fetch_game(int32_t seqid, ::apache::thrift::pro
   return processor;
 }
 
-bool GameLobbyConcurrentClient::signup(const std::string& username, const std::string& password)
+bool GameLobbyConcurrentClient::sign_up(const std::string& username, const std::string& password)
 {
-  int32_t seqid = send_signup(username, password);
-  return recv_signup(seqid);
+  int32_t seqid = send_sign_up(username, password);
+  return recv_sign_up(seqid);
 }
 
-int32_t GameLobbyConcurrentClient::send_signup(const std::string& username, const std::string& password)
+int32_t GameLobbyConcurrentClient::send_sign_up(const std::string& username, const std::string& password)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("signup", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("sign_up", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  GameLobby_signup_pargs args;
+  GameLobby_sign_up_pargs args;
   args.username = &username;
   args.password = &password;
   args.write(oprot_);
@@ -1044,7 +1044,7 @@ int32_t GameLobbyConcurrentClient::send_signup(const std::string& username, cons
   return cseqid;
 }
 
-bool GameLobbyConcurrentClient::recv_signup(const int32_t seqid)
+bool GameLobbyConcurrentClient::recv_sign_up(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -1073,7 +1073,7 @@ bool GameLobbyConcurrentClient::recv_signup(const int32_t seqid)
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("signup") != 0) {
+      if (fname.compare("sign_up") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -1083,7 +1083,7 @@ bool GameLobbyConcurrentClient::recv_signup(const int32_t seqid)
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
       bool _return;
-      GameLobby_signup_presult result;
+      GameLobby_sign_up_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -1098,7 +1098,7 @@ bool GameLobbyConcurrentClient::recv_signup(const int32_t seqid)
         throw result.e;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signup failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "sign_up failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -1108,19 +1108,19 @@ bool GameLobbyConcurrentClient::recv_signup(const int32_t seqid)
   } // end while(true)
 }
 
-bool GameLobbyConcurrentClient::signin(const std::string& username, const std::string& password)
+bool GameLobbyConcurrentClient::sign_in(const std::string& username, const std::string& password)
 {
-  int32_t seqid = send_signin(username, password);
-  return recv_signin(seqid);
+  int32_t seqid = send_sign_in(username, password);
+  return recv_sign_in(seqid);
 }
 
-int32_t GameLobbyConcurrentClient::send_signin(const std::string& username, const std::string& password)
+int32_t GameLobbyConcurrentClient::send_sign_in(const std::string& username, const std::string& password)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("signin", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("sign_in", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  GameLobby_signin_pargs args;
+  GameLobby_sign_in_pargs args;
   args.username = &username;
   args.password = &password;
   args.write(oprot_);
@@ -1133,7 +1133,7 @@ int32_t GameLobbyConcurrentClient::send_signin(const std::string& username, cons
   return cseqid;
 }
 
-bool GameLobbyConcurrentClient::recv_signin(const int32_t seqid)
+bool GameLobbyConcurrentClient::recv_sign_in(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -1162,7 +1162,7 @@ bool GameLobbyConcurrentClient::recv_signin(const int32_t seqid)
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("signin") != 0) {
+      if (fname.compare("sign_in") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -1172,7 +1172,7 @@ bool GameLobbyConcurrentClient::recv_signin(const int32_t seqid)
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
       bool _return;
-      GameLobby_signin_presult result;
+      GameLobby_sign_in_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -1187,7 +1187,7 @@ bool GameLobbyConcurrentClient::recv_signin(const int32_t seqid)
         throw result.e;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signin failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "sign_in failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -1197,10 +1197,10 @@ bool GameLobbyConcurrentClient::recv_signin(const int32_t seqid)
   } // end while(true)
 }
 
-bool GameLobbyConcurrentClient::fetch_game(const Game::type g)
+void GameLobbyConcurrentClient::fetch_game(Path& _return, const Game::type g)
 {
   int32_t seqid = send_fetch_game(g);
-  return recv_fetch_game(seqid);
+  recv_fetch_game(_return, seqid);
 }
 
 int32_t GameLobbyConcurrentClient::send_fetch_game(const Game::type g)
@@ -1221,7 +1221,7 @@ int32_t GameLobbyConcurrentClient::send_fetch_game(const Game::type g)
   return cseqid;
 }
 
-bool GameLobbyConcurrentClient::recv_fetch_game(const int32_t seqid)
+void GameLobbyConcurrentClient::recv_fetch_game(Path& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -1259,7 +1259,6 @@ bool GameLobbyConcurrentClient::recv_fetch_game(const int32_t seqid)
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      bool _return;
       GameLobby_fetch_game_presult result;
       result.success = &_return;
       result.read(iprot_);
@@ -1267,8 +1266,9 @@ bool GameLobbyConcurrentClient::recv_fetch_game(const int32_t seqid)
       iprot_->getTransport()->readEnd();
 
       if (result.__isset.success) {
+        // _return pointer has now been filled
         sentry.commit();
-        return _return;
+        return;
       }
       // in a bad state, don't commit
       throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "fetch_game failed: unknown result");
@@ -1281,5 +1281,5 @@ bool GameLobbyConcurrentClient::recv_fetch_game(const int32_t seqid)
   } // end while(true)
 }
 
-} // namespace
+
 

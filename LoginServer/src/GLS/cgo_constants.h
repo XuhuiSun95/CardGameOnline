@@ -9,7 +9,7 @@
 
 #include "cgo_types.h"
 
-namespace cgo {
+
 
 class cgoConstants {
  public:
@@ -19,6 +19,6 @@ class cgoConstants {
 
 extern const cgoConstants g_cgo_constants;
 
-} // namespace
+
 
 #endif

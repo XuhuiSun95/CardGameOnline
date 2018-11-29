@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include "ConfigLoader.h"
 #include "Database.h"
-//#include "RTSP.h"
+#include "GameLobbyServer.h"
 
 class SystemManager {
 
@@ -22,7 +22,7 @@ private:
     // private variables
     Config mConfig;
     Database* mDB;
-    //RTSP* mRTSP;
+    GameLobbyServer* mGL;
 
     SystemManager(const std::string& config_path);
     ~SystemManager();

@@ -18,7 +18,7 @@ void SystemManager::Release() {
 
 void SystemManager::Run() {
 
-    //mRTSP->Run();
+    mGL->Run();
 }
 
 SystemManager::SystemManager(const std::string& config_path) {
@@ -31,7 +31,7 @@ SystemManager::SystemManager(const std::string& config_path) {
     cfg_loader = nullptr;
 
     mDB = Database::Instance(mConfig);
-    //mRTSP = RTSP::Instance(mConfig.rtsp_port, mConfig.rtsp_thread, mMQTT);
+    mGL = GameLobbyServer::Instance(mConfig, mDB);
 }
 
 SystemManager::~SystemManager() {
@@ -39,6 +39,6 @@ SystemManager::~SystemManager() {
     Database::Release();
     mDB = nullptr;
 
-    //RTSP::Release();
-    //mRTSP = nullptr;
+    GameLobbyServer::Release();
+    mGL = nullptr;
 }

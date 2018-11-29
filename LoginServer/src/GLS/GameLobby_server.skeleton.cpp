@@ -14,25 +14,23 @@ using namespace ::apache::thrift::server;
 
 using boost::shared_ptr;
 
-using namespace  ::cgo;
-
 class GameLobbyHandler : virtual public GameLobbyIf {
  public:
   GameLobbyHandler() {
     // Your initialization goes here
   }
 
-  bool signup(const std::string& username, const std::string& password) {
+  bool sign_up(const std::string& username, const std::string& password) {
     // Your implementation goes here
-    printf("signup\n");
+    printf("sign_up\n");
   }
 
-  bool signin(const std::string& username, const std::string& password) {
+  bool sign_in(const std::string& username, const std::string& password) {
     // Your implementation goes here
-    printf("signin\n");
+    printf("sign_in\n");
   }
 
-  bool fetch_game(const Game::type g) {
+  void fetch_game(Path& _return, const Game::type g) {
     // Your implementation goes here
     printf("fetch_game\n");
   }
