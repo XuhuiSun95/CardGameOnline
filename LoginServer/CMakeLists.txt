@@ -5,7 +5,9 @@ set (CMAKE_CXX_STANDARD 11)
 
 project (${target_name} C CXX)
 
+include_directories(/usr/local/mysql/connector-c++-8.0/include)
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
+link_directories(/usr/local/mysql/connector-c++-8.0/lib64/debug)
 
 add_executable(${target_name}
     src/main.cpp
@@ -23,8 +25,8 @@ add_executable(${target_name}
 
 target_link_libraries(${target_name}
     -lmysqlcppconn8
-    #-lpthread
     -lthrift
     -lthriftnb
     -levent
+    -lcryptopp
     )

@@ -14,7 +14,8 @@ struct Path {
 # 1xx series: sign up error
 #     101: username exist
 # 2xx series: sign in error
-#     201: username/password not match or exist
+#     201: username not exist
+#     202: username/password not match
 # =============================================
 exception InvalidOperation {
     1: i32 err_code,
