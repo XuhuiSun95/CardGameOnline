@@ -31,7 +31,9 @@ SOURCES += \
     GLS/cgo_constants.cpp \
     GLS/cgo_types.cpp \
     GLS/GameLobby.cpp \
-    GameManager.cpp
+    GameManager.cpp \
+    Menu.cpp \
+    Lobby.cpp
 
 HEADERS += \
     Card.h \
@@ -39,7 +41,9 @@ HEADERS += \
     GLS/cgo_constants.h \
     GLS/cgo_types.h \
     GLS/GameLobby.h \
-    GameManager.h
+    GameManager.h \
+    Menu.h \
+    Lobby.h
 
 FORMS +=
 

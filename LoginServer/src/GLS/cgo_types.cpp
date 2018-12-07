@@ -13,28 +13,24 @@
 
 
 
-int _kGameValues[] = {
-  Game::DOUDIZHU
-};
-const char* _kGameNames[] = {
-  "DOUDIZHU"
-};
-const std::map<int, const char*> _Game_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(1, _kGameValues, _kGameNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
-
-Path::~Path() throw() {
+Game::~Game() throw() {
 }
 
 
-void Path::__set_host(const std::string& val) {
+void Game::__set_name(const std::string& val) {
+  this->name = val;
+}
+
+void Game::__set_host(const std::string& val) {
   this->host = val;
 }
 
-void Path::__set_port(const int32_t val) {
+void Game::__set_port(const int32_t val) {
   this->port = val;
 }
 
-uint32_t Path::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t Game::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -57,13 +53,21 @@ uint32_t Path::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->name);
+          this->__isset.name = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->host);
           this->__isset.host = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 2:
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->port);
           this->__isset.port = true;
@@ -83,16 +87,20 @@ uint32_t Path::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t Path::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t Game::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("Path");
+  xfer += oprot->writeStructBegin("Game");
 
-  xfer += oprot->writeFieldBegin("host", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->name);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("host", ::apache::thrift::protocol::T_STRING, 2);
   xfer += oprot->writeString(this->host);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("port", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeFieldBegin("port", ::apache::thrift::protocol::T_I32, 3);
   xfer += oprot->writeI32(this->port);
   xfer += oprot->writeFieldEnd();
 
@@ -101,28 +109,32 @@ uint32_t Path::write(::apache::thrift::protocol::TProtocol* oprot) const {
   return xfer;
 }
 
-void swap(Path &a, Path &b) {
+void swap(Game &a, Game &b) {
   using ::std::swap;
+  swap(a.name, b.name);
   swap(a.host, b.host);
   swap(a.port, b.port);
   swap(a.__isset, b.__isset);
 }
 
-Path::Path(const Path& other0) {
+Game::Game(const Game& other0) {
+  name = other0.name;
   host = other0.host;
   port = other0.port;
   __isset = other0.__isset;
 }
-Path& Path::operator=(const Path& other1) {
+Game& Game::operator=(const Game& other1) {
+  name = other1.name;
   host = other1.host;
   port = other1.port;
   __isset = other1.__isset;
   return *this;
 }
-void Path::printTo(std::ostream& out) const {
+void Game::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "Path(";
-  out << "host=" << to_string(host);
+  out << "Game(";
+  out << "name=" << to_string(name);
+  out << ", " << "host=" << to_string(host);
   out << ", " << "port=" << to_string(port);
   out << ")";
 }

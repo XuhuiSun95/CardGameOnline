@@ -455,11 +455,11 @@ uint32_t GameLobby_sign_in_presult::read(::apache::thrift::protocol::TProtocol* 
 }
 
 
-GameLobby_fetch_game_args::~GameLobby_fetch_game_args() throw() {
+GameLobby_add_game_args::~GameLobby_add_game_args() throw() {
 }
 
 
-uint32_t GameLobby_fetch_game_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t GameLobby_add_game_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -481,10 +481,8 @@ uint32_t GameLobby_fetch_game_args::read(::apache::thrift::protocol::TProtocol* 
     switch (fid)
     {
       case 1:
-        if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast4;
-          xfer += iprot->readI32(ecast4);
-          this->g = (Game::type)ecast4;
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->g.read(iprot);
           this->__isset.g = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -502,13 +500,13 @@ uint32_t GameLobby_fetch_game_args::read(::apache::thrift::protocol::TProtocol* 
   return xfer;
 }
 
-uint32_t GameLobby_fetch_game_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t GameLobby_add_game_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("GameLobby_fetch_game_args");
+  xfer += oprot->writeStructBegin("GameLobby_add_game_args");
 
-  xfer += oprot->writeFieldBegin("g", ::apache::thrift::protocol::T_I32, 1);
-  xfer += oprot->writeI32((int32_t)this->g);
+  xfer += oprot->writeFieldBegin("g", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->g.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -517,17 +515,17 @@ uint32_t GameLobby_fetch_game_args::write(::apache::thrift::protocol::TProtocol*
 }
 
 
-GameLobby_fetch_game_pargs::~GameLobby_fetch_game_pargs() throw() {
+GameLobby_add_game_pargs::~GameLobby_add_game_pargs() throw() {
 }
 
 
-uint32_t GameLobby_fetch_game_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t GameLobby_add_game_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("GameLobby_fetch_game_pargs");
+  xfer += oprot->writeStructBegin("GameLobby_add_game_pargs");
 
-  xfer += oprot->writeFieldBegin("g", ::apache::thrift::protocol::T_I32, 1);
-  xfer += oprot->writeI32((int32_t)(*(this->g)));
+  xfer += oprot->writeFieldBegin("g", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->g)).write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -536,11 +534,146 @@ uint32_t GameLobby_fetch_game_pargs::write(::apache::thrift::protocol::TProtocol
 }
 
 
-GameLobby_fetch_game_result::~GameLobby_fetch_game_result() throw() {
+GameLobby_add_game_result::~GameLobby_add_game_result() throw() {
 }
 
 
-uint32_t GameLobby_fetch_game_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t GameLobby_add_game_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t GameLobby_add_game_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("GameLobby_add_game_result");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+GameLobby_add_game_presult::~GameLobby_add_game_presult() throw() {
+}
+
+
+uint32_t GameLobby_add_game_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+GameLobby_fetch_games_args::~GameLobby_fetch_games_args() throw() {
+}
+
+
+uint32_t GameLobby_fetch_games_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t GameLobby_fetch_games_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("GameLobby_fetch_games_args");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+GameLobby_fetch_games_pargs::~GameLobby_fetch_games_pargs() throw() {
+}
+
+
+uint32_t GameLobby_fetch_games_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("GameLobby_fetch_games_pargs");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+GameLobby_fetch_games_result::~GameLobby_fetch_games_result() throw() {
+}
+
+
+uint32_t GameLobby_fetch_games_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -562,8 +695,20 @@ uint32_t GameLobby_fetch_game_result::read(::apache::thrift::protocol::TProtocol
     switch (fid)
     {
       case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->success.clear();
+            uint32_t _size4;
+            ::apache::thrift::protocol::TType _etype7;
+            xfer += iprot->readListBegin(_etype7, _size4);
+            this->success.resize(_size4);
+            uint32_t _i8;
+            for (_i8 = 0; _i8 < _size4; ++_i8)
+            {
+              xfer += this->success[_i8].read(iprot);
+            }
+            xfer += iprot->readListEnd();
+          }
           this->__isset.success = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -581,15 +726,23 @@ uint32_t GameLobby_fetch_game_result::read(::apache::thrift::protocol::TProtocol
   return xfer;
 }
 
-uint32_t GameLobby_fetch_game_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t GameLobby_fetch_games_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("GameLobby_fetch_game_result");
+  xfer += oprot->writeStructBegin("GameLobby_fetch_games_result");
 
   if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_LIST, 0);
+    {
+      xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->success.size()));
+      std::vector<Game> ::const_iterator _iter9;
+      for (_iter9 = this->success.begin(); _iter9 != this->success.end(); ++_iter9)
+      {
+        xfer += (*_iter9).write(oprot);
+      }
+      xfer += oprot->writeListEnd();
+    }
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -598,11 +751,11 @@ uint32_t GameLobby_fetch_game_result::write(::apache::thrift::protocol::TProtoco
 }
 
 
-GameLobby_fetch_game_presult::~GameLobby_fetch_game_presult() throw() {
+GameLobby_fetch_games_presult::~GameLobby_fetch_games_presult() throw() {
 }
 
 
-uint32_t GameLobby_fetch_game_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t GameLobby_fetch_games_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -624,8 +777,20 @@ uint32_t GameLobby_fetch_game_presult::read(::apache::thrift::protocol::TProtoco
     switch (fid)
     {
       case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            (*(this->success)).clear();
+            uint32_t _size10;
+            ::apache::thrift::protocol::TType _etype13;
+            xfer += iprot->readListBegin(_etype13, _size10);
+            (*(this->success)).resize(_size10);
+            uint32_t _i14;
+            for (_i14 = 0; _i14 < _size10; ++_i14)
+            {
+              xfer += (*(this->success))[_i14].read(iprot);
+            }
+            xfer += iprot->readListEnd();
+          }
           this->__isset.success = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -767,18 +932,18 @@ bool GameLobbyClient::recv_sign_in()
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "sign_in failed: unknown result");
 }
 
-void GameLobbyClient::fetch_game(Path& _return, const Game::type g)
+void GameLobbyClient::add_game(const Game& g)
 {
-  send_fetch_game(g);
-  recv_fetch_game(_return);
+  send_add_game(g);
+  recv_add_game();
 }
 
-void GameLobbyClient::send_fetch_game(const Game::type g)
+void GameLobbyClient::send_add_game(const Game& g)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("fetch_game", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("add_game", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  GameLobby_fetch_game_pargs args;
+  GameLobby_add_game_pargs args;
   args.g = &g;
   args.write(oprot_);
 
@@ -787,7 +952,7 @@ void GameLobbyClient::send_fetch_game(const Game::type g)
   oprot_->getTransport()->flush();
 }
 
-void GameLobbyClient::recv_fetch_game(Path& _return)
+void GameLobbyClient::recv_add_game()
 {
 
   int32_t rseqid = 0;
@@ -807,12 +972,64 @@ void GameLobbyClient::recv_fetch_game(Path& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("fetch_game") != 0) {
+  if (fname.compare("add_game") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  GameLobby_fetch_game_presult result;
+  GameLobby_add_game_presult result;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  return;
+}
+
+void GameLobbyClient::fetch_games(std::vector<Game> & _return)
+{
+  send_fetch_games();
+  recv_fetch_games(_return);
+}
+
+void GameLobbyClient::send_fetch_games()
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("fetch_games", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  GameLobby_fetch_games_pargs args;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void GameLobbyClient::recv_fetch_games(std::vector<Game> & _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("fetch_games") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  GameLobby_fetch_games_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -822,7 +1039,7 @@ void GameLobbyClient::recv_fetch_game(Path& _return)
     // _return pointer has now been filled
     return;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "fetch_game failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "fetch_games failed: unknown result");
 }
 
 bool GameLobbyProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
@@ -958,38 +1175,37 @@ void GameLobbyProcessor::process_sign_in(int32_t seqid, ::apache::thrift::protoc
   }
 }
 
-void GameLobbyProcessor::process_fetch_game(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void GameLobbyProcessor::process_add_game(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("GameLobby.fetch_game", callContext);
+    ctx = this->eventHandler_->getContext("GameLobby.add_game", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "GameLobby.fetch_game");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "GameLobby.add_game");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "GameLobby.fetch_game");
+    this->eventHandler_->preRead(ctx, "GameLobby.add_game");
   }
 
-  GameLobby_fetch_game_args args;
+  GameLobby_add_game_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "GameLobby.fetch_game", bytes);
+    this->eventHandler_->postRead(ctx, "GameLobby.add_game", bytes);
   }
 
-  GameLobby_fetch_game_result result;
+  GameLobby_add_game_result result;
   try {
-    iface_->fetch_game(result.success, args.g);
-    result.__isset.success = true;
+    iface_->add_game(args.g);
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "GameLobby.fetch_game");
+      this->eventHandler_->handlerError(ctx, "GameLobby.add_game");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("fetch_game", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("add_game", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -998,17 +1214,71 @@ void GameLobbyProcessor::process_fetch_game(int32_t seqid, ::apache::thrift::pro
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "GameLobby.fetch_game");
+    this->eventHandler_->preWrite(ctx, "GameLobby.add_game");
   }
 
-  oprot->writeMessageBegin("fetch_game", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("add_game", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "GameLobby.fetch_game", bytes);
+    this->eventHandler_->postWrite(ctx, "GameLobby.add_game", bytes);
+  }
+}
+
+void GameLobbyProcessor::process_fetch_games(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("GameLobby.fetch_games", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "GameLobby.fetch_games");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "GameLobby.fetch_games");
+  }
+
+  GameLobby_fetch_games_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "GameLobby.fetch_games", bytes);
+  }
+
+  GameLobby_fetch_games_result result;
+  try {
+    iface_->fetch_games(result.success);
+    result.__isset.success = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "GameLobby.fetch_games");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("fetch_games", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "GameLobby.fetch_games");
+  }
+
+  oprot->writeMessageBegin("fetch_games", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "GameLobby.fetch_games", bytes);
   }
 }
 
@@ -1197,19 +1467,19 @@ bool GameLobbyConcurrentClient::recv_sign_in(const int32_t seqid)
   } // end while(true)
 }
 
-void GameLobbyConcurrentClient::fetch_game(Path& _return, const Game::type g)
+void GameLobbyConcurrentClient::add_game(const Game& g)
 {
-  int32_t seqid = send_fetch_game(g);
-  recv_fetch_game(_return, seqid);
+  int32_t seqid = send_add_game(g);
+  recv_add_game(seqid);
 }
 
-int32_t GameLobbyConcurrentClient::send_fetch_game(const Game::type g)
+int32_t GameLobbyConcurrentClient::send_add_game(const Game& g)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("fetch_game", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("add_game", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  GameLobby_fetch_game_pargs args;
+  GameLobby_add_game_pargs args;
   args.g = &g;
   args.write(oprot_);
 
@@ -1221,7 +1491,7 @@ int32_t GameLobbyConcurrentClient::send_fetch_game(const Game::type g)
   return cseqid;
 }
 
-void GameLobbyConcurrentClient::recv_fetch_game(Path& _return, const int32_t seqid)
+void GameLobbyConcurrentClient::recv_add_game(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -1250,7 +1520,7 @@ void GameLobbyConcurrentClient::recv_fetch_game(Path& _return, const int32_t seq
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("fetch_game") != 0) {
+      if (fname.compare("add_game") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -1259,7 +1529,84 @@ void GameLobbyConcurrentClient::recv_fetch_game(Path& _return, const int32_t seq
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      GameLobby_fetch_game_presult result;
+      GameLobby_add_game_presult result;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      sentry.commit();
+      return;
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void GameLobbyConcurrentClient::fetch_games(std::vector<Game> & _return)
+{
+  int32_t seqid = send_fetch_games();
+  recv_fetch_games(_return, seqid);
+}
+
+int32_t GameLobbyConcurrentClient::send_fetch_games()
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("fetch_games", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  GameLobby_fetch_games_pargs args;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void GameLobbyConcurrentClient::recv_fetch_games(std::vector<Game> & _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("fetch_games") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      GameLobby_fetch_games_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -1271,7 +1618,7 @@ void GameLobbyConcurrentClient::recv_fetch_game(Path& _return, const int32_t seq
         return;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "fetch_game failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "fetch_games failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);

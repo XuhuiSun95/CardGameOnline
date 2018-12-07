@@ -39,5 +39,3 @@ void Card::hoverLeaveEvent(QGraphicsSceneHoverEvent* event) {
 
     rect->setOpacity(0.0);
 }
-
-

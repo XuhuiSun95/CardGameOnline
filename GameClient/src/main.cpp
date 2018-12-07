@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 
     GameManager* game = new GameManager();
     game->show();
-    game->displayMainMenu();
+    game->run();
 
     return a.exec();
 }

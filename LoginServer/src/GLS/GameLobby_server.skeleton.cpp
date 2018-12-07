@@ -30,9 +30,14 @@ class GameLobbyHandler : virtual public GameLobbyIf {
     printf("sign_in\n");
   }
 
-  void fetch_game(Path& _return, const Game::type g) {
+  void add_game(const Game& g) {
     // Your implementation goes here
-    printf("fetch_game\n");
+    printf("add_game\n");
+  }
+
+  void fetch_games(std::vector<Game> & _return) {
+    // Your implementation goes here
+    printf("fetch_games\n");
   }
 
 };

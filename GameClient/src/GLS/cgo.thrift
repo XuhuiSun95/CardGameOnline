@@ -1,10 +1,7 @@
-enum Game {
-    DOUDIZHU = 1,
-}
-
-struct Path {
-    1: string host,
-    2: i32 port
+struct Game {
+    1: string name,
+    2: string host,
+    3: i32 port
 }
 
 # ==============================================
@@ -28,5 +25,7 @@ service GameLobby {
 
     bool sign_in(1:string username, 2:string password) throws (1:InvalidOperation e),
 
-    Path fetch_game(1:Game g)
+    void add_game(1:Game g),
+
+    list<Game> fetch_games()
 }

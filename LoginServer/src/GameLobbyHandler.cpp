@@ -63,14 +63,14 @@ bool GameLobbyHandler::sign_in(const std::string& username, const std::string& p
     }
 }
 
-void GameLobbyHandler::fetch_game(Path& _return, const Game::type g) {
+void GameLobbyHandler::add_game(const Game& g) {
 
-    switch(g) {
-        case Game::DOUDIZHU:
-            _return.host = mConfig->doudizhu_host;
-            _return.port = mConfig->doudizhu_port;
-            break;
-        default:
-            break;
-    }
+    list_mtx.lock();
+    mGames.push_back(g);
+    list_mtx.unlock();
+}
+
+void GameLobbyHandler::fetch_games(std::vector<Game>& _return) {
+
+    _return = mGames;
 }
