@@ -11,7 +11,7 @@ public:
 
     Table(QGraphicsScene* ptr, const int id, QGraphicsPixmapItem* parent = nullptr);
 
-    void upate_slot(std::vector<bool>& slot);
+    void upate_slots(std::vector<bool>& slots);
 
 private:
 

@@ -10,9 +10,11 @@ struct Game {
 #     1: system busy
 # 1xx series: sign up error
 #     101: username exist
+#     102: username/password empty
 # 2xx series: sign in error
 #     201: username not exist
 #     202: username/password not match
+#     203: username/password empty
 # =============================================
 exception InvalidOperation {
     1: i32 err_code,

@@ -59,7 +59,7 @@ void Lobby::connect_game(Game g) {
 
     // connect game server
     // fetch table info
-    std::vector<bool> info = {false, true, false, false};
+    std::vector<bool> info = {false, true, false};
 
     // Game title
     QGraphicsTextItem* lobbyText = new QGraphicsTextItem(QString::fromStdString(g.name));
@@ -76,11 +76,11 @@ void Lobby::connect_game(Game g) {
     double iyPos = mScene->height()/10*5;
     table1->setPos(ixPos,iyPos);
     mScene->addItem(table1);
-    table1->upate_slot(info);
+    table1->upate_slots(info);
 
 
 
-    /*
+/*
     std::cout << g.name << std::endl;
     Card* c = new Card("BackBlue");
     c->setPos(190, 300);
@@ -93,5 +93,5 @@ void Lobby::connect_game(Game g) {
     Card* c3 = new Card("Heart5");
     c3->setPos(210, 300);
     mScene->addItem(c3);
-    */
+*/
 }

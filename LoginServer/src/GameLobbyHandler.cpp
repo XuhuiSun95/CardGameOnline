@@ -8,6 +8,13 @@ GameLobbyHandler::GameLobbyHandler(const Config& cfg, Database* ptr) {
 
 bool GameLobbyHandler::sign_up(const std::string& username, const std::string& password) {
 
+    if(username=="" || password=="") {
+        InvalidOperation io;
+        io.err_code = 102;
+        io.why = "username/password empty";
+        throw io;
+    }
+
     int res = mDB->sign_up(username, password);
     switch(res) {
         case 0:
@@ -32,6 +39,13 @@ bool GameLobbyHandler::sign_up(const std::string& username, const std::string& p
 }
 
 bool GameLobbyHandler::sign_in(const std::string& username, const std::string& password) {
+
+    if(username=="" || password=="") {
+        InvalidOperation io;
+        io.err_code = 203;
+        io.why = "username/password empty";
+        throw io;
+    }
 
     int res = mDB->sign_in(username, password);
     switch(res) {

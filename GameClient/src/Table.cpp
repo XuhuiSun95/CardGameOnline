@@ -14,7 +14,7 @@ Table::Table(QGraphicsScene* ptr, const int id, QGraphicsPixmapItem* parent) : Q
     setBrush(brush);
 }
 
-void Table::upate_slot(std::vector<bool> &slot) {
+void Table::upate_slots(std::vector<bool> &slot) {
 
     QString aval;
     for(int i=0; i<slot.size(); i++) {

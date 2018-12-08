@@ -1,37 +1,39 @@
-#ifndef GAMELOBBYSERVER_H
-#define GAMELOBBYSERVER_H
+#ifndef CARDGAMESERVER_H
+#define CARDGAMESERVER_H
 
 #include <thrift/protocol/TCompactProtocol.h>
 #include <thrift/server/TNonblockingServer.h>
 #include <thrift/transport/TServerSocket.h>
 #include <thrift/transport/TBufferTransports.h>
 #include <thrift/concurrency/PosixThreadFactory.h>
-#include "GameLobbyHandler.h"
+#include <thrift/transport/TSocket.h>
+#include "CardGameHandler.h"
+#include "GLS/GameLobby.h"
 
-class GameLobbyServer {
+class CardGameServer {
 
 public:
 
-    static GameLobbyServer* Instance(const Config& cfg, Database* ptr);
+    static CardGameServer* Instance(const Config& cfg);
     static void Release();
 
     void Run();
 
 private:
 
-    static GameLobbyServer* sInstance;
+    static CardGameServer* sInstance;
 
     // private variable
     const Config* mConfig;
     static const int THREAD_NUM;
-    boost::shared_ptr<GameLobbyHandler> handler;
+    boost::shared_ptr<CardGameHandler> handler;
     boost::shared_ptr<apache::thrift::TProcessor> processor;
     boost::shared_ptr<apache::thrift::protocol::TProtocolFactory> protocolFactory;
     boost::shared_ptr<apache::thrift::concurrency::ThreadManager> threadManager;
     boost::shared_ptr<apache::thrift::concurrency::PosixThreadFactory> threadFactory;
 
-    GameLobbyServer(const Config& cfg, Database* ptr);
-    ~GameLobbyServer();
+    CardGameServer(const Config& cfg);
+    ~CardGameServer();
 
 };
 
