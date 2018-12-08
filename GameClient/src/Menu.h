@@ -1,7 +1,6 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include <iostream>
 #include <QLineEdit>
 #include <QLabel>
 #include <thrift/transport/TSocket.h>

@@ -33,7 +33,8 @@ SOURCES += \
     GLS/GameLobby.cpp \
     GameManager.cpp \
     Menu.cpp \
-    Lobby.cpp
+    Lobby.cpp \
+    Table.cpp
 
 HEADERS += \
     Card.h \
@@ -43,7 +44,8 @@ HEADERS += \
     GLS/GameLobby.h \
     GameManager.h \
     Menu.h \
-    Lobby.h
+    Lobby.h \
+    Table.h
 
 FORMS +=
 

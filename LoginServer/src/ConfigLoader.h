@@ -13,10 +13,8 @@ struct Config {
     std::string db_username;
     std::string db_password;
 
-    // Servoce
+    // Service
     int server_port;
-    std::string doudizhu_host;
-    int doudizhu_port;
 };
 
 class ConfigLoader {

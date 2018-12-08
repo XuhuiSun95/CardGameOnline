@@ -1,14 +1,11 @@
 #ifndef LOBBY_H
 #define LOBBY_H
 
-#include <QGraphicsScene>
 #include <thrift/transport/TBufferTransports.h>
 #include "GLS/GameLobby.h"
 #include "Button.h"
 #include "Card.h"
-
-#include <iostream>
-
+#include "Table.h"
 
 class Lobby : public QObject {
     Q_OBJECT

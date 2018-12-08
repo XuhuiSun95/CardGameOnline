@@ -31,7 +31,7 @@ void Menu::display_main_menu() {
     mScene->addItem(titleText);
 
     // create the sign_in button
-    Button* signinButton = new Button(QString("Sign in"));
+    Button* signinButton = new Button(QString("Sign in"),200,50);
     double ixPos = mScene->width()/2 - signinButton->boundingRect().width()/2;
     double iyPos = mScene->height()/10*5;
     signinButton->setPos(ixPos,iyPos);
@@ -39,7 +39,7 @@ void Menu::display_main_menu() {
     mScene->addItem(signinButton);
 
     // create the sign_up button
-    Button* signupButton = new Button(QString("Sign up"));
+    Button* signupButton = new Button(QString("Sign up"),200,50);
     double uxPos = mScene->width()/2 - signupButton->boundingRect().width()/2;
     double uyPos = mScene->height()/10*6;
     signupButton->setPos(uxPos,uyPos);
@@ -47,7 +47,7 @@ void Menu::display_main_menu() {
     mScene->addItem(signupButton);
 
     // create the quit button
-    Button* quitButton = new Button(QString("Quit"));
+    Button* quitButton = new Button(QString("Quit"),200,50);
     double qxPos = mScene->width()/2 - quitButton->boundingRect().width()/2;
     double qyPos = mScene->height()/10*7;
     quitButton->setPos(qxPos,qyPos);
@@ -90,7 +90,7 @@ void Menu::signin_menu() {
     mScene->addWidget(labelPassword);
 
     // create the confirm button
-    Button* confirmButton = new Button(QString("Confirm"));
+    Button* confirmButton = new Button(QString("Confirm"),200,50);
     double ixPos = mScene->width()/2 - confirmButton->boundingRect().width()/2*3;
     double iyPos = mScene->height()/10*6;
     confirmButton->setPos(ixPos,iyPos);
@@ -98,7 +98,7 @@ void Menu::signin_menu() {
     mScene->addItem(confirmButton);
 
     // create the back button
-    Button* backButton = new Button(QString("Back"));
+    Button* backButton = new Button(QString("Back"),200,50);
     double bxPos = mScene->width()/2 + backButton->boundingRect().width()/2;
     double byPos = mScene->height()/10*6;
     backButton->setPos(bxPos,byPos);
@@ -153,7 +153,7 @@ void Menu::signup_menu() {
     mScene->addWidget(labelPasswordConfirm);
 
     // create the confirm button
-    Button* confirmButton = new Button(QString("Confirm"));
+    Button* confirmButton = new Button(QString("Confirm"),200,50);
     double ixPos = mScene->width()/2 - confirmButton->boundingRect().width()/2*3;
     double iyPos = mScene->height()/10*6;
     confirmButton->setPos(ixPos,iyPos);
@@ -161,7 +161,7 @@ void Menu::signup_menu() {
     mScene->addItem(confirmButton);
 
     // create the back button
-    Button* backButton = new Button(QString("Back"));
+    Button* backButton = new Button(QString("Back"),200,50);
     double bxPos = mScene->width()/2 + backButton->boundingRect().width()/2;
     double byPos = mScene->height()/10*6;
     backButton->setPos(bxPos,byPos);

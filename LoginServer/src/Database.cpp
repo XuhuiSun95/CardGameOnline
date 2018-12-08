@@ -96,7 +96,7 @@ Database::Database(const Config& cfg) {
             mysqlx::SessionOption::DB, mConfig->db_name,
             mysqlx::SessionOption::SSL_MODE, mysqlx::SSLMode::REQUIRED,
             mysqlx::ClientOption::POOLING, true,
-            mysqlx::ClientOption::POOL_MAX_SIZE, 1,
+            mysqlx::ClientOption::POOL_MAX_SIZE, 8,
             mysqlx::ClientOption::POOL_QUEUE_TIMEOUT, 1000,
             mysqlx::ClientOption::POOL_MAX_IDLE_TIME, 500
             );

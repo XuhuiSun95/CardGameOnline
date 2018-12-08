@@ -52,14 +52,6 @@ bool ConfigLoader::LoadConfig() {
         std::cerr << "Unknow login server port number" << std::endl;
         return false;
     }
-    if((mConfig->doudizhu_host = reader.GetString("service", "doudizhu_host", "UNKNOW"))=="UNKNOW") {
-        std::cerr << "Unknow doudizhu host address" << std::endl;
-        return false;
-    }
-    if(!(mConfig->doudizhu_port = reader.GetInteger("service", "doudizhu_port", 0))) {
-        std::cerr << "Unknow doudizhu port number" << std::endl;
-        return false;
-    }
 
     std::cout << "The configuration was successfully loaded" << std::endl;
     return true;
@@ -76,8 +68,6 @@ void ConfigLoader::PrintConfig() {
               << std::endl;
     std::cout << "\nService:\n"
               << "server_port = " << mConfig->server_port
-              << "\ndoudizhu_host = " << mConfig->doudizhu_host
-              << "\ndoudizhu_port = " << mConfig->doudizhu_port
               << std::endl;
     std::cout << "=================================" << std::endl;
     

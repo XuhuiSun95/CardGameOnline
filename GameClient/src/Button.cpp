@@ -1,9 +1,9 @@
 #include "Button.h"
 
-Button::Button(QString name, QGraphicsRectItem* parent) : QGraphicsRectItem (parent){
+Button::Button(QString name, const int width, const int height, QGraphicsRectItem* parent) : QGraphicsRectItem (parent){
 
     // Base button rect
-    setRect(0,0,200,50);
+    setRect(0,0,width,height);
     QBrush brush;
     brush.setStyle(Qt::SolidPattern);
     brush.setColor(Qt::darkCyan);
