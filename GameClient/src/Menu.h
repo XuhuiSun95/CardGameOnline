@@ -3,9 +3,7 @@
 
 #include <QLineEdit>
 #include <QLabel>
-#include <thrift/transport/TSocket.h>
-#include <thrift/protocol/TCompactProtocol.h>
-#include "Lobby.h"
+#include "LobbyManager.h"
 
 class Menu : public QObject {
     Q_OBJECT
@@ -28,7 +26,7 @@ private:
     QLineEdit* editUsername;
     QLineEdit* editPassword;
     QLineEdit* editPasswordConfirm;
-    Lobby* mLobby;
+    LobbyManager* mLobby;
 
 private slots:
 

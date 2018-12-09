@@ -43,6 +43,16 @@ bool ConfigLoader::LoadConfig() {
         return false;
     }
 
+    // Lobby
+    if(!(mConfig->table_size = reader.GetInteger("lobby", "table_size", 0))) {
+        std::cerr << "Unknow table size" << std::endl;
+        return false;
+    }
+    if(!(mConfig->slot_size = reader.GetInteger("lobby", "slot_size", 0))) {
+        std::cerr << "Unknow slot size" << std::endl;
+        return false;
+    }
+
     std::cout << "The configuration was successfully loaded" << std::endl;
     return true;
 }
@@ -55,6 +65,10 @@ void ConfigLoader::PrintConfig() {
               << "\nlogin_port = " << mConfig->login_port
               << "\ngame_name = " << mConfig->game_name
               << "\ngame_port = " << mConfig->game_port
+              << std::endl;
+    std::cout << "Lobby:\n"
+              << "table_size = " << mConfig->table_size
+              << "\nslot_size = " << mConfig->slot_size
               << std::endl;
     std::cout << "=================================" << std::endl;
     

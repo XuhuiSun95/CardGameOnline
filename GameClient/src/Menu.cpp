@@ -13,7 +13,7 @@ Menu::Menu(QGraphicsScene *ptr, QWidget* parent) :
 
     mScene = ptr;
     mParent = parent;
-    mLobby = new Lobby(mScene, transport, &client);
+    mLobby = new LobbyManager(mScene, transport, &client);
 }
 
 void Menu::display_main_menu() {
@@ -188,8 +188,10 @@ void Menu::sign_in(const std::string& username, const std::string& password) {
             signin_menu();
             mScene->addItem(err_msg);
         }
+        transport->close();
 
     } catch (const InvalidOperation& io) {
+        transport->close();
         std::cout << io.err_code << ": " << io.why << std::endl;
         QGraphicsTextItem* err_msg = new QGraphicsTextItem(QString::fromStdString(io.why));
         double txPos = mScene->width()/2 - err_msg->boundingRect().width()/2;
@@ -198,9 +200,9 @@ void Menu::sign_in(const std::string& username, const std::string& password) {
         signin_menu();
         mScene->addItem(err_msg);
     } catch (const std::exception& e) {
+        transport->close();
         std::cout << e.what() << std::endl;
     }
-    transport->close();
 }
 
 void Menu::sign_up(const std::string& username, const std::string& password, const std::string& password_confirm) {
@@ -214,6 +216,7 @@ void Menu::sign_up(const std::string& username, const std::string& password, con
         signup_menu();
         mScene->addItem(err_msg);
         return;
+
     }
     try {
         transport->open();
@@ -231,8 +234,10 @@ void Menu::sign_up(const std::string& username, const std::string& password, con
             signup_menu();
             mScene->addItem(err_msg);
         }
+        transport->close();
 
     } catch (const InvalidOperation& io) {
+        transport->close();
         std::cout << io.err_code << ": " << io.why << std::endl;
         QGraphicsTextItem* err_msg = new QGraphicsTextItem(QString::fromStdString(io.why));
         double txPos = mScene->width()/2 - err_msg->boundingRect().width()/2;
@@ -241,7 +246,7 @@ void Menu::sign_up(const std::string& username, const std::string& password, con
         signup_menu();
         mScene->addItem(err_msg);
     } catch (const std::exception& e) {
+        transport->close();
         std::cout << e.what() << std::endl;
     }
-    transport->close();
 }

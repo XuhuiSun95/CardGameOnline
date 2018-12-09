@@ -1,6 +1,6 @@
-#include "Card.h"
+#include "CardManager.h"
 
-Card::Card(QString name, QGraphicsPixmapItem* parent) : QGraphicsPixmapItem (parent) {
+CardManager::CardManager(QString name, QGraphicsPixmapItem* parent) : QGraphicsPixmapItem (parent) {
 
     // Base card pixmap
     choosed = false;
@@ -19,7 +19,7 @@ Card::Card(QString name, QGraphicsPixmapItem* parent) : QGraphicsPixmapItem (par
     setAcceptHoverEvents(true);
 }
 
-void Card::mousePressEvent(QGraphicsSceneMouseEvent* event) {
+void CardManager::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 
     if(choosed) {
         choosed = false;
@@ -30,12 +30,12 @@ void Card::mousePressEvent(QGraphicsSceneMouseEvent* event) {
     }
 }
 
-void Card::hoverEnterEvent(QGraphicsSceneHoverEvent* event) {
+void CardManager::hoverEnterEvent(QGraphicsSceneHoverEvent* event) {
 
     rect->setOpacity(0.3);
 }
 
-void Card::hoverLeaveEvent(QGraphicsSceneHoverEvent* event) {
+void CardManager::hoverLeaveEvent(QGraphicsSceneHoverEvent* event) {
 
     rect->setOpacity(0.0);
 }

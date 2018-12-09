@@ -1,17 +1,14 @@
-#ifndef LOBBY_H
-#define LOBBY_H
+#ifndef LOBBYMANAGER_H
+#define LOBBYMANAGER_H
 
-#include <thrift/transport/TBufferTransports.h>
 #include "GLS/GameLobby.h"
-#include "Button.h"
-#include "Card.h"
-#include "Table.h"
+#include "TableManager.h"
 
-class Lobby : public QObject {
+class LobbyManager : public QObject {
     Q_OBJECT
 public:
 
-    Lobby(QGraphicsScene* ptr, boost::shared_ptr<apache::thrift::transport::TTransport> trans, GameLobbyClient* clt);
+    LobbyManager(QGraphicsScene* ptr, boost::shared_ptr<apache::thrift::transport::TTransport> trans, GameLobbyClient* clt);
 
     void display_lobby_menu();
 

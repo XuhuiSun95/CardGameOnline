@@ -11,6 +11,10 @@ struct Config {
     int login_port;
     std::string game_name;
     int game_port;
+
+    // Lobby
+    int table_size;
+    int slot_size;
 };
 
 class ConfigLoader {

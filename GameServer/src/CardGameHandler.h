@@ -16,6 +16,8 @@ private:
 
     // private variable
     const Config* mConfig;
+    std::mutex tbl_mtx;
+    std::vector<Table> mTables;
 
     // handler
     void fetch_tables(std::vector<Table>& _return);

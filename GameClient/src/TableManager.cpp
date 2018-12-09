@@ -1,9 +1,15 @@
-#include "Table.h"
+#include "TableManager.h"
 
-Table::Table(QGraphicsScene* ptr, const int id, QGraphicsPixmapItem* parent) : QGraphicsRectItem (parent) {
+using namespace ::apache::thrift;
+using namespace ::apache::thrift::protocol;
+using namespace ::apache::thrift::transport;
+using boost::shared_ptr;
+
+TableManager::TableManager(QGraphicsScene* ptr, const Game g, const int id, QGraphicsPixmapItem* parent) : QGraphicsRectItem (parent) {
 
     // Table id
     mScene = ptr;
+    mGame = g;
     mId = id;
 
     // Base table rect
@@ -14,7 +20,7 @@ Table::Table(QGraphicsScene* ptr, const int id, QGraphicsPixmapItem* parent) : Q
     setBrush(brush);
 }
 
-void Table::upate_slots(std::vector<bool> &slot) {
+void TableManager::upate_slots(std::vector<bool> &slot) {
 
     QString aval;
     for(int i=0; i<slot.size(); i++) {
@@ -37,12 +43,35 @@ void Table::upate_slots(std::vector<bool> &slot) {
         }
         seat->setPos(xPos,yPos);
         mScene->addItem(seat);
-        connect(seat, &Button::clicked, this, [this, i]{ (pick_slot(i)); });
+        connect(seat, &Button::clicked, this, [this,i]{ pick_slot(i); });
     }
 }
 
-void Table::pick_slot(int i) {
+void TableManager::pick_slot(int i) {
 
     std::cout << "table id = " << mId << std::endl;
     std::cout << "seat id = " << i << std::endl;
+
+    // connect game server
+    boost::shared_ptr<TTransport> g_socket(new TSocket(mGame.host, mGame.port));
+    boost::shared_ptr<TTransport> g_transport(new TFramedTransport(g_socket));
+    boost::shared_ptr<TProtocol> g_protocol(new TCompactProtocol(g_transport));
+    CardGameClient g_client(g_protocol);
+
+    // fetch table info
+    try {
+        g_transport->open();
+
+        if(g_client.join_table(mId, i)) {
+            std::cout << "success join table " << mId << " ,seat " << i << std::endl;
+        }
+        else {
+            std::cout << "unable to join table " << mId << " ,seat " << i << std::endl;
+        }
+        g_transport->close();
+
+    } catch (const std::exception& e) {
+        g_transport->close();
+        std::cout << e.what() << std::endl;
+    }
 }

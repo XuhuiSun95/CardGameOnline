@@ -1,16 +1,16 @@
-#ifndef CARD_H
-#define CARD_H
+#ifndef CARDMANAGER_H
+#define CARDMANAGER_H
 
 #include <QGraphicsPixmapItem>
 #include <QGraphicsRectItem>
 #include <QBrush>
 #include <QGraphicsSceneMouseEvent>
 
-class Card : public QGraphicsPixmapItem {
+class CardManager : public QGraphicsPixmapItem {
 
 public:
 
-    Card(QString name, QGraphicsPixmapItem* parent = nullptr);
+    CardManager(QString name, QGraphicsPixmapItem* parent = nullptr);
 
     void mousePressEvent(QGraphicsSceneMouseEvent* event);
     void hoverEnterEvent(QGraphicsSceneHoverEvent* event);

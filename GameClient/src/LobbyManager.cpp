@@ -1,13 +1,18 @@
-#include "Lobby.h"
+#include "LobbyManager.h"
 
-Lobby::Lobby(QGraphicsScene *ptr, boost::shared_ptr<apache::thrift::transport::TTransport> trans, GameLobbyClient* clt) {
+using namespace ::apache::thrift;
+using namespace ::apache::thrift::protocol;
+using namespace ::apache::thrift::transport;
+using boost::shared_ptr;
+
+LobbyManager::LobbyManager(QGraphicsScene *ptr, boost::shared_ptr<apache::thrift::transport::TTransport> trans, GameLobbyClient* clt) {
 
     mScene = ptr;
     transport = trans;
     client = clt;
 }
 
-void Lobby::display_lobby_menu() {
+void LobbyManager::display_lobby_menu() {
 
     // Clear all
     mScene->clear();
@@ -30,6 +35,7 @@ void Lobby::display_lobby_menu() {
         std::cout << e.what() << std::endl;
     }
     transport->close();
+
     int h = 4;
     for(int i=0; i<mGames.size(); i++) {
 
@@ -52,33 +58,56 @@ void Lobby::display_lobby_menu() {
     mScene->addItem(refreshButton);
 }
 
-void Lobby::connect_game(Game g) {
+void LobbyManager::connect_game(Game g) {
 
     // Clear all
     mScene->clear();
 
     // connect game server
+    boost::shared_ptr<TTransport> g_socket(new TSocket(g.host, g.port));
+    boost::shared_ptr<TTransport> g_transport(new TFramedTransport(g_socket));
+    boost::shared_ptr<TProtocol> g_protocol(new TCompactProtocol(g_transport));
+    CardGameClient g_client(g_protocol);
+
     // fetch table info
-    std::vector<bool> info = {false, true, false};
+    std::vector<Table> info;
+    try {
+        g_transport->open();
+
+        g_client.fetch_tables(info);
+        g_transport->close();
+
+    } catch (const std::exception& e) {
+        g_transport->close();
+        std::cout << e.what() << std::endl;
+    }
 
     // Game title
     QGraphicsTextItem* lobbyText = new QGraphicsTextItem(QString::fromStdString(g.name));
     QFont titleFont("Clarendon", 30);
     lobbyText->setFont(titleFont);
     double txPos = mScene->width()/2 - lobbyText->boundingRect().width()/2;
-    double tyPos = mScene->height()/15;
+    double tyPos = mScene->height()/50;
     lobbyText->setPos(txPos,tyPos);
     mScene->addItem(lobbyText);
 
+    // Refresh button
+    Button* refreshButton = new Button(QString("Refresh"),200,50);
+    double ixPos = mScene->width()/10*8 - refreshButton->boundingRect().width()/2;
+    double iyPos = mScene->height()/50;
+    refreshButton->setPos(ixPos,iyPos);
+    connect(refreshButton, &Button::clicked, this, [this, g]{ connect_game(g); });
+    mScene->addItem(refreshButton);
+
     // render tables
-    Table* table1 = new Table(mScene, 1);
-    double ixPos = mScene->width()/10*2 - table1->boundingRect().width()/2;
-    double iyPos = mScene->height()/10*5;
-    table1->setPos(ixPos,iyPos);
-    mScene->addItem(table1);
-    table1->upate_slots(info);
-
-
+    for(int i=0; i<info.size(); i++) {
+        TableManager* t = new TableManager(mScene, g, i);
+        double ixPos = mScene->width()/10*(1+4*(i%3)) - t->boundingRect().width()/2;
+        double iyPos = mScene->height()/10*(2+3*(i/3));
+        t->setPos(ixPos,iyPos);
+        mScene->addItem(t);
+        t->upate_slots(info[i].slot);
+    }
 
 /*
     std::cout << g.name << std::endl;

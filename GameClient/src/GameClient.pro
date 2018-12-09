@@ -26,26 +26,32 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    Card.cpp \
     Button.cpp \
     GLS/cgo_constants.cpp \
     GLS/cgo_types.cpp \
     GLS/GameLobby.cpp \
+    CGS/cg_constants.cpp \
+    CGS/cg_types.cpp \
+    CGS/CardGame.cpp \
     GameManager.cpp \
     Menu.cpp \
-    Lobby.cpp \
-    Table.cpp
+    LobbyManager.cpp \
+    TableManager.cpp \
+    CardManager.cpp
 
 HEADERS += \
-    Card.h \
     Button.h \
     GLS/cgo_constants.h \
     GLS/cgo_types.h \
     GLS/GameLobby.h \
+    CGS/cg_constants.h \
+    CGS/cg_types.h \
+    CGS/CardGame.h \
     GameManager.h \
     Menu.h \
-    Lobby.h \
-    Table.h
+    LobbyManager.h \
+    TableManager.h \
+    CardManager.h
 
 FORMS +=
 
@@ -57,6 +63,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     resources.qrc
 
-unix: LIBS += -L/usr/local/lib \
-              -L$$PWD/lib \
-            -lthrift-0.9.3
+unix: LIBS += \
+    -L/usr/local/lib \
+    -L$$PWD/lib \
+    -lthrift-0.9.3
